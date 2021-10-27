@@ -7,7 +7,7 @@ const Manager = require("./lib/Manager");
 const employees = [];
 
 function initApp() {
-    startHTML();
+    startHtml();
     addMember();
 }
 
@@ -59,5 +59,26 @@ function addMember() {
             ],
             name: "moreMembers"
         }])
+        .then (function({roleInfo, moreMembers}) {
+            let newMember;
+            if (role === "Engineer") {
+                newMember = new Engineer(name, id, email, roleInfo);
+            }
+            if (role === "Intern") {
+                newMember = new Intern(name, id, email, roleInfo);
+            }
+            if (role === "Manager") {
+                newMember = new Manager(name, id, email, roleInfo);
+            }
+
+            employees.push(newMember);
+            addHtml(newMember)
+            .then (function() {
+                if (moreMembers === "yes") {
+                    addMember();
+                }
+                finishHtml();
+            })
+        })
     })
 }
