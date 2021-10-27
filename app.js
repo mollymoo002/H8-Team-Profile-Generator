@@ -35,6 +35,29 @@ function addMember() {
         name: "email"
     }])
     .then (function({ name, role, id, email}) {
-        
+        let roleInfo = "";
+        if (role === "Engineer") {
+            roleInfo = "Github username";
+        }
+        if (role === "Intern") {
+            roleInfo = "school name";
+        }
+        if (role === "Manager") {
+            roleInfo = "office phone number";
+        }
+
+        inquirer.prompt([{
+            message: `Enter member's ${roleInfo}`,
+            name: "roleInfo"
+        },
+        {
+            type: "list",
+            message: "Would you like to add another member?",
+            choices: [
+                "yes",
+                "no"
+            ],
+            name: "moreMembers"
+        }])
     })
 }
