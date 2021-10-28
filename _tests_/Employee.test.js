@@ -3,7 +3,7 @@ const Employee = require('../lib/employee');
 describe("Employee", () => {
     it("Should create a new employee with name, email, Gihtub, and employee ID", () => {
         const e = new Employee();
-        expect(typeOf(e)).toBe("object");
+        expect(typeof(e)).toBe("object");
     });
 
     it("Should set the name from constructor arguments", () => {
