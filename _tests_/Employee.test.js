@@ -1,7 +1,6 @@
 const Employee = require('../lib/employee');
-const employee = require('../lib/employee');
 
-describe("employee", () => {
+describe("Employee", () => {
     it("Should create a new employee with name, email, Gihtub, and employee ID", () => {
         const e = new Employee();
         expect(typeOf(e)).toBe("object");
@@ -21,15 +20,15 @@ describe("employee", () => {
 
     it("Should set email from constructor arguments", () => {
         const testVal = "test@test.com";
-        const e = new Employee("Olivia", testVal);
-        expect(e.id).toBe(testVal);
+        const e = new Employee("Olivia", 1, testVal);
+        expect(e.email).toBe(testVal);
     });
 
     describe("getName", () => {
         it("Should get a name via getName()", () => {
             const testVal = "Molly";
             const e = new Employee(testVal);
-            expect(e.getName().toBe(testVal));
+            expect(e.getName()).toBe(testVal);
         });
     });
 
