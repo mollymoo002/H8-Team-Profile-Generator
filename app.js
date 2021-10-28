@@ -105,6 +105,60 @@ function startHtml() {
         `</div>`;
 }
 
-
+function addHtml(member) {
+    return new Promise(function(resolve, reject) {
+        const name = member.getName();
+        const role = member.getRole();
+        const id = member.getId();
+        const email = member.getEmail();
+        let data = "";
+        if (role === "Engineer") {
+            const gitHub = member.getGithub();
+            data = `<div class="col-6">
+            <div>
+            <h5>${name}<br><br>Engineer</h5>
+            <ul>
+                <li>ID: ${id}</li>
+                <li>Email Address: ${email}</li>
+                <li>Github: ${gitHub}</li>
+            </ul>
+            </div>
+        </div>`;
+        } 
+        if (role === "Intern") {
+            const school = member.getSchool();
+            data = `<div
+            <div>
+            <h5>${name}<br>Intern</h5>
+            <ul>
+                <li>ID: ${id}</li>
+                <li>Email Address: ${email}</li>
+                <li>School: ${school}</li>
+            </ul>
+            </div>
+        </div>`;
+        }
+        if (role === "Manager") {
+            const officePhone = member.getOfficeNumber();
+            data = `<div>
+            <div>
+            <h5>${name}<br>Manager</h5>
+            <ul>
+                <li>ID: ${id}</li>
+                <li>Email Address: ${email}</li>
+                <li>Office Phone: ${officePhone}</li>
+            </ul>
+            </div>
+        </div>`;
+        }
+        console.log("adding team member");
+        fs.appendFile("./output/team.html", data, function (err) {
+            if (err) {
+                return reject(err);
+            };
+            return resolve();
+        });
+    });
+}
     `</body>
     </html>`;
