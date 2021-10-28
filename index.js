@@ -95,6 +95,7 @@ function startHtml() {
     </head>
     <body>
         <h1>Team Profile</h1>
+        <div>
         <div>`;
             fs.writeFile("./dist/team.html", html, function (err) {
                 if (err) {
@@ -102,7 +103,6 @@ function startHtml() {
                 }
             });
         console.log("start");
-        `</div>`;
 }
 
 function addHtml(member) {
@@ -127,7 +127,7 @@ function addHtml(member) {
         } 
         if (role === "Intern") {
             const school = member.getSchool();
-            data = `<div
+            data = `<div>
             <div>
             <h5>${name}<br>Intern</h5>
             <ul>
@@ -163,8 +163,8 @@ function addHtml(member) {
 
 function finishHtml() {
     const html = `</div>
-    </div>`
-    `</body>
+    </div>
+    </body>
     </html>`;
 
     fs.appendFile("./dist/team.html", html, function (err) {
